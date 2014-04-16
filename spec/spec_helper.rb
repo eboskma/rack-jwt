@@ -8,6 +8,7 @@
 require 'rack/mock'
 require 'rack/test'
 require 'rack/jwt'
+require 'support/context'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
