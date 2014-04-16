@@ -17,7 +17,7 @@ describe Rack::JWT do
     code, env, body = middleware.call Rack::MockRequest.env_for 'http://example.com'
     
     expect(code).to eq(401)
-    expect(body).to include("No Authentication Token provided.")
+    expect(body.first).to include("No Authentication Token provided.")
   end
   
   it "raises a JWT::DecodeError with an invalid token" do
@@ -48,7 +48,7 @@ describe Rack::JWT do
       code, env, body = excluded_middleware.call Rack::MockRequest.env_for 'http://example.com/foo'
     
       expect(code).to eq(401)
-      expect(body).to include("No Authentication Token provided.")
+      expect(body.first).to include("No Authentication Token provided.")
     end
     
   end
@@ -66,7 +66,7 @@ describe Rack::JWT do
       code, env, body = prefixed_middleware.call Rack::MockRequest.env_for 'http://example.com/api/foo'
     
       expect(code).to eq(401)
-      expect(body).to include("No Authentication Token provided.")
+      expect(body.first).to include("No Authentication Token provided.")
     end
     
     it "returns success inside the prefix" do

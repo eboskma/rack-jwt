@@ -52,11 +52,15 @@ module Rack
     end
     
     def unauthorized
-      body = "No Authentication Token provided."
+      # body = "No Authentication Token provided."
+      body = MultiJson.dump({
+        status: 401,
+        message: "No Authentication Token provided."
+      })
       [
         401, 
         { 
-          "Content-Type" => "text/plain; charset=utf-8", 
+          "Content-Type" => "application/json; charset=utf-8", 
           "Content-Length" => "#{body.length}", 
           "WWW-Authenticate" => "None"
         }, 
