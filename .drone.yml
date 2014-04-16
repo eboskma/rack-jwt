@@ -7,8 +7,6 @@ script:
   - bundle install
   - echo "====== Running specs ======"
   - bundle exec rspec spec
-services:
-  - postgres
 notify:
   email:
     recipients:
