@@ -15,6 +15,7 @@ notify:
     team: {{slack_team}}
     channel: {{slack_channel}}
     token: {{slack_token}}
+    username: drone
     on_started: true
     on_success: true
     on_failure: true
