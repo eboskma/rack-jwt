@@ -1,0 +1,22 @@
+---
+image: bradrydzewski/ruby:2.1.1
+env:
+script:
+  - echo "====== Setting up environment ======"
+  - gem install bundler
+  - bundle install
+  - echo "====== Running specs ======"
+  - bundle exec rspec spec
+services:
+  - postgres
+notify:
+  email:
+    recipients:
+      - erwin@datarift.nl
+  slack:
+    team: {{slack_team}}
+    channel: {{slack_channel}}
+    token: {{slack_token}}
+    on_started: true
+    on_success: true
+    on_failure: true
